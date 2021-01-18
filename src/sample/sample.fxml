@@ -53,7 +53,7 @@
       </VBox>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#buttonDoPlayAction" text="Play" />
+            <Button fx:id="buttonPlayButton" mnemonicParsing="false" onAction="#buttonDoPlayAction" text="Play" />
          </children>
       </HBox>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
