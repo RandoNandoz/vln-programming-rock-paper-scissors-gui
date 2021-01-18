@@ -21,7 +21,6 @@ public class Controller {
     }
 
     public void doSelectCurrentOption() {
-
     }
 
     public void buttonDoSelectedCurrentSelectedMove(ActionEvent actionEvent) {
@@ -34,33 +33,46 @@ public class Controller {
         labelAIMove.setText(aiMove);
         switch (aiMove) {
             case Move.ROCK:
+                System.out.println("AI plays rock.");
                 switch (currentPlayerMove.getCurrentMove()) {
                     case Move.PAPER:
+                        System.out.println("User plays paper.");
                         labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
                     case Move.SCISSORS:
+                        System.out.println("User plays scissors");
                         labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText() + 1)));
                     default:
+                        System.out.println("User plays rock or default.");
                         break;
                 }
             case Move.PAPER:
+                System.out.println("AI players paper.");
                 switch (currentPlayerMove.getCurrentMove()) {
                     case Move.ROCK:
+                        System.out.println("User plays rock.");
                         labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
                     case Move.SCISSORS:
+                        System.out.println("User plays scissors");
                         labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
                     default:
+                        System.out.println("User plays paper or default.");
                         break;
                 }
             case Move.SCISSORS:
+                System.out.println("AI plays scissors.");
                 switch (currentPlayerMove.getCurrentMove()) {
                     case Move.ROCK:
+                        System.out.println("User plays rock.");
                         labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
                     case Move.PAPER:
+                        System.out.println("User plays paper.");
                         labelAIScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
                     default:
+                        System.out.println("User plays scissors or default.");
                         break;
                 }
             default:
+                System.out.println("Invalid.");
                 break;
         }
     }
