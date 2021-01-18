@@ -22,6 +22,14 @@
       </Label>
       <HBox alignment="CENTER_RIGHT" prefHeight="157.0" prefWidth="640.0">
          <children>
+            <Label fx:id="labelAIMove" text="Click Play!">
+               <HBox.margin>
+                  <Insets right="200.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
             <ListView fx:id="listMovesPlayable" onMouseClicked="#doSelectCurrentOption" prefHeight="200.0" prefWidth="200.0">
                <HBox.margin>
                   <Insets right="50.0" />
@@ -43,5 +51,29 @@
             </Button>
          </children>
       </VBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#buttonDoPlayAction" text="Play" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="labelAIScore" text="0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="-">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelPlayerScore" text="0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </VBox>
