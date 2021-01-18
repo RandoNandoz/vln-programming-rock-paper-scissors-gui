@@ -33,53 +33,39 @@ public class Controller {
         labelSelectedMove.setText(currentPlayerMove.getCurrentMove());
     }
 
-    public void buttonDoPlayAction(ActionEvent actionEvent) {
+    public void buttonDoPlayAction(ActionEvent actionEvent) throws Exception {
         SecureRandom secureRandom = new SecureRandom();
         String aiMove = listMovesPlayable.getItems().get(secureRandom.nextInt(3)).getCurrentMove();
+        String playerMove = currentPlayerMove.getCurrentMove();
         labelAIMove.setText(aiMove);
-        switch (aiMove) {
-            case Move.ROCK:
-                System.out.println("AI plays rock.");
-                switch (currentPlayerMove.getCurrentMove()) {
-                    case Move.PAPER:
-                        System.out.println("User plays paper.");
-                        labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
-                    case Move.SCISSORS:
-                        System.out.println("User plays scissors");
-                        labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
-                    default:
-                        System.out.println("User plays rock or default.");
-                        break;
-                }
-            case Move.PAPER:
-                System.out.println("AI players paper.");
-                switch (currentPlayerMove.getCurrentMove()) {
-                    case Move.ROCK:
-                        System.out.println("User plays rock.");
-                        labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
-                    case Move.SCISSORS:
-                        System.out.println("User plays scissors");
-                        labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
-                    default:
-                        System.out.println("User plays paper or default.");
-                        break;
-                }
-            case Move.SCISSORS:
-                System.out.println("AI plays scissors.");
-                switch (currentPlayerMove.getCurrentMove()) {
-                    case Move.ROCK:
-                        System.out.println("User plays rock.");
-                        labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
-                    case Move.PAPER:
-                        System.out.println("User plays paper.");
-                        labelAIScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
-                    default:
-                        System.out.println("User plays scissors or default.");
-                        break;
-                }
-            default:
-                System.out.println("Invalid.");
-                break;
+        if (aiMove.equals(Move.ROCK)) {
+            if (playerMove.equals(Move.ROCK)) {
+                return;
+            } else if (playerMove.equals(Move.PAPER)) {
+                labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
+            } else if (playerMove.equals(Move.SCISSORS)) {
+                labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
+            } else {
+                throw new Exception();
+            }
+        } else if (aiMove.equals(Move.PAPER)) {
+            if (playerMove.equals(Move.ROCK)) {
+                labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
+            } else if (playerMove.equals(Move.PAPER)) {
+                return;
+            } else if (playerMove.equals(Move.SCISSORS)) {
+                labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
+            } else {
+                throw new Exception();
+            }
+        } else if (aiMove.equals(Move.SCISSORS)) {
+            if (playerMove.equals(Move.ROCK)) {
+                labelPlayerScore.setText(String.valueOf(Integer.parseInt(labelPlayerScore.getText()) + 1));
+            } else if (playerMove.equals(Move.PAPER)) {
+                labelAIScore.setText(String.valueOf(Integer.parseInt(labelAIScore.getText()) + 1));
+            } else if (playerMove.equals(Move.SCISSORS)) {
+                return;
+            } else return;
         }
         currentPlayerMove = null;
         labelSelectedMove.setText("");
